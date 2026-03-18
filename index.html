@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Star in the Sky - Tome 1 : From the stars | Mary Coune</title>
+    <meta name="description"
+        content="Découvrez 'My star in the sky', un roman bouleversant sur l'amour, la maladie et les étoiles par Mary Coune. Plongez dans l'histoire de Lia et Noah à Seattle.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Canvas for subtle star animation -->
+    <!-- Canvas for subtle star animation (optional front layer of stars) -->
+    <canvas id="starfield"></canvas>
+
+    <header class="hero animated-bg">
+        <div class="hero-content">
+            <h1 class="fade-in-up">My Star in the Sky</h1>
+            <h2 class="fade-in-up delay-1">Tome 1 : From the stars</h2>
+            <p class="author fade-in-up delay-2">Par Mary Coune</p>
+            <div class="cta-buttons text-center reveal">
+                <a href="#synopsis" class="btn btn-primary">Découvrir l'histoire</a>
+                <a href="https://amzn.eu/d/07w8DpzD" target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-amazon"></i> Acheter le livre 1
+                </a>
+                <a href="https://www.instagram.com/mcoune222017/" target="_blank" class="btn btn-social"
+                    title="Suivre sur Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.wattpad.com/user/mdefossez10" target="_blank" class="btn btn-social"
+                    title="Lire sur Wattpad">
+                    <i class="fas fa-book-open"></i>
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <a href="#synopsis">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section id="synopsis" class="synopsis-section">
+            <div class="container reveal">
+                <div class="grid-2-cols">
+                    <div class="synopsis-text">
+                        <h3 class="section-title">Deux âmes brisées. Une attraction électrique.</h3>
+                        <p>Lia adore les étoiles. Parce qu'elles lui rappellent sa mère, décédée il y a quelques années,
+                            et parce qu’elles lui donnent l’illusion de l'avoir toujours à ses côtés. Après avoir appris
+                            la pire des nouvelles, elle rejoint son frère à Seattle, bien décidée à garder son lourd
+                            secret : une leucémie qui menace sa vie.</p>
+                        <p>Dans cette ville inconnue, Lia devra apprendre à se battre contre la maladie, mais aussi
+                            contre ses propres démons. Mais elle n’avait pas prévu Noah, son colocataire au regard
+                            sombre et à l’attitude froide, qui semble cacher bien des blessures derrière sa carapace.
+                        </p>
+                        <p class="highlight-text">Quand le pire côtoie le meilleur, l’amour peut-il vraiment tout
+                            réparer ? Ou risque-t-il, au contraire, de tout détruire ?</p>
+                        <a href="https://amzn.eu/d/07w8DpzD" target="_blank" class="btn btn-secondary mt-1">
+                            <i class="fab fa-amazon"></i> Disponible sur Amazon
+                        </a>
+                    </div>
+                    <div class="synopsis-image">
+                        <img src="assets/couple.png" alt="Illustration conceptuelle de Noah et Lia sous les étoiles"
+                            class="floating-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NOUVELLE SECTION : Extrait -->
+        <section class="excerpt-section">
+            <div class="container reveal">
+                <!-- Bouton de contrôle audio -->
+                <div class="audio-control-container text-center mb-2">
+                    <!-- Bouton Mute Personnalisé -->
+                    <button id="mute-btn" class="btn btn-outline pulse-btn">
+                        <i class="fas fa-volume-up" id="mute-icon"></i> <span id="mute-text">Couper le son</span>
+                    </button>
+                    <!-- Lecteur audio standard HTML5 masqué (sans controls) -->
+                    <!-- Note sur l'autoplay : Il lancera la musique au premier clic sur la page si bloqué, mais on l'active par JS -->
+                    <audio id="bg-music" loop>
+                        <source src="audio/James%20Arthur%20-%20Say%20You%20Wont%20Let%20Go.mp3" type="audio/mpeg">
+                        Votre navigateur ne supporte pas cet élément audio.
+                    </audio>
+                </div>
+
+                <div class="book-excerpt-container" id="prologue-container">
+                    <h3 class="section-title text-center">Prologue</h3>
+                    <div class="excerpt-content">
+                        <p>« J’adore les étoiles. »</p>
+                        <p>Voilà ce que j’avais pris l’habitude de dire à ma mère lorsque j’étais petite. Ces petites
+                            choses qui brillent dans l’obscurité de la nuit sont si... fascinantes. Elles sont
+                            magnifiques, et elles le sont d’autant plus, maintenant que ma maman brille à leurs côtés.
+                        </p>
+                        <p>Elles me font me sentir en sécurité et me rappellent sans cesse mon enfance.</p>
+                        <p>Je pensais qu’il était impossible qu’un homme puisse m’aimer, alors que je suis sur le point
+                            d’en devenir une à mon tour. Je ne savais pas que, dans le pire, je pouvais trouver ce qu’il
+                            y a de meilleur.</p>
+                        <p>Pourtant, il m’a aimée... Il a enfoui ses démons pour m’aimer d’un amour qui nous lie si fort
+                            qu’il nous fait du mal.</p>
+                        <p>Mais même six pieds sous terre, les démons refont toujours surface.</p>
+                        <p>Je savais que m’aimer allait le briser, mais au lieu de m’éloigner, je l’ai laissé me
+                            prendre, sans me douter du mal que l’on se destinait à subir.</p>
+                        <p>Je ne voulais pas l’aimer… Je ne pouvais pas l’aimer. Mais l’amour, cet antre de l’enfer,
+                            m’empêche tout bonnement de rester loin d’elle.</p>
+                        <p>L’amour est un monde dangereux dans lequel elle et moi avons décidé de plonger. Mais deux
+                            personnes si différentes peuvent-elles réellement se combler lorsqu’elles partagent les
+                            mêmes démons ?</p>
+                        <p>Je savais que plonger dans cet abysse finirait par me faire mal... Mais à ce point ? Aucun de
+                            nous deux n’aurait pu l’imaginer.</p>
+                        <p>Pourtant, en l’aimant, je la mènerai à sa perte... celle-là même qui entraînera la mienne.
+                        </p>
+                        <p>Maintenant, nous devons en subir les conséquences, qui, j’en suis sûre, ne nous laisseront
+                            pas indemnes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CASTING SECTION -->
+        <section class="casting-section" id="casting">
+            <div class="container">
+                <h2 class="section-title">Le Casting</h2>
+
+                <div class="carousel-container">
+                    <button class="carousel-btn prev-btn" aria-label="Personnage précédent"><i
+                            class="fas fa-chevron-left"></i></button>
+                    <div class="casting-track" id="castingTrack">
+                        <!-- Lia -->
+                        <div class="cast-card">
+                            <div class="cast-img-wrapper">
+                                <img src="assets/lia.jpg" alt="Lia" class="cast-img"
+                                    onerror="this.src='https://placehold.co/400x500/121a2b/ffffff?text=Lia'">
+                            </div>
+                            <div class="cast-info">
+                                <h4 class="cast-name">Lia <i class="fas fa-camera"></i></h4>
+                                <p class="cast-subtitle">"La Swiftie de l'histoire"</p>
+                                <ul class="cast-traits">
+                                    <li>Aime tout garder pour elle, puis péter un câble</li>
+                                    <li>Peur viscérale de l'abandon</li>
+                                    <li>Un peu mytho sur les bords</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Noah -->
+                        <div class="cast-card">
+                            <div class="cast-img-wrapper">
+                                <img src="assets/noah.jpg" alt="Noah" class="cast-img"
+                                    onerror="this.src='https://placehold.co/400x500/121a2b/ffffff?text=Noah'">
+                            </div>
+                            <div class="cast-info">
+                                <h4 class="cast-name">Noah <i class="fas fa-glasses"></i></h4>
+                                <p class="cast-subtitle">"Le bad boy je m'enfoutiste de prime abord"</p>
+                                <ul class="cast-traits">
+                                    <li>Adore écouter Britney Spears</li>
+                                    <li>Drague la soeur de son meilleur ami</li>
+                                    <li>Change d'avis sur ses sentiments comme il change de caleçon</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Marc -->
+                        <div class="cast-card">
+                            <div class="cast-img-wrapper">
+                                <img src="assets/marc.jpg" alt="Marc" class="cast-img"
+                                    onerror="this.src='https://placehold.co/400x500/121a2b/ffffff?text=Marc'">
+                            </div>
+                            <div class="cast-info">
+                                <h4 class="cast-name">Marc <i class="fas fa-tooth"></i></h4>
+                                <p class="cast-subtitle">"Le maniaque de la famille"</p>
+                                <ul class="cast-traits">
+                                    <li>Un peu mytho lui aussi (c'est de famille)</li>
+                                    <li>Ignore tout de la vie de sa soeur</li>
+                                    <li>Pense qu'à draguer sa patiente mais est un vrai boulet</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Alex -->
+                        <div class="cast-card">
+                            <div class="cast-img-wrapper">
+                                <img src="assets/alex.jpg" alt="Alex" class="cast-img"
+                                    onerror="this.src='https://placehold.co/400x500/121a2b/ffffff?text=Alex'">
+                            </div>
+                            <div class="cast-info">
+                                <h4 class="cast-name">Alex <i class="fas fa-file-signature"></i></h4>
+                                <p class="cast-subtitle">"Le pote cool"</p>
+                                <ul class="cast-traits">
+                                    <li>Ne cache pas bien son jeu</li>
+                                    <li>Se fait humilier par une fille aux jeux vidéos</li>
+                                    <li>La personne de confiance qui n'a rien demandé</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Ali -->
+                        <div class="cast-card">
+                            <div class="cast-img-wrapper">
+                                <img src="assets/ali.jpg" alt="Ali" class="cast-img"
+                                    onerror="this.src='https://placehold.co/400x500/121a2b/ffffff?text=Ali'">
+                            </div>
+                            <div class="cast-info">
+                                <h4 class="cast-name">Ali <i class="fas fa-heart"></i></h4>
+                                <p class="cast-subtitle">"La femme fatale"</p>
+                                <ul class="cast-traits">
+                                    <li>Bégaye quand elle parle au mec qu'elle kiffe</li>
+                                    <li>N'assume pas d'aimer le frère de son amie</li>
+                                    <li>Cherche à caser la soeur de son futur mec</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Amy -->
+                        <div class="cast-card">
+                            <div class="cast-img-wrapper">
+                                <img src="assets/amy.jpg" alt="Amy" class="cast-img"
+                                    onerror="this.src='https://placehold.co/400x500/121a2b/ffffff?text=Amy'">
+                            </div>
+                            <div class="cast-info">
+                                <h4 class="cast-name">Amy <i class="fas fa-staff-snake"></i></h4>
+                                <p class="cast-subtitle">"La tante cool"</p>
+                                <ul class="cast-traits">
+                                    <li>Infirmière</li>
+                                    <li>Psychologue à ses heures perdues</li>
+                                    <li>Une gaffeuse invétérée</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Clara -->
+                        <div class="cast-card">
+                            <div class="cast-img-wrapper">
+                                <img src="assets/clara.jpg" alt="Clara" class="cast-img"
+                                    onerror="this.src='https://placehold.co/400x500/121a2b/ffffff?text=Clara'">
+                            </div>
+                            <div class="cast-info">
+                                <h4 class="cast-name">Clara <i class="fas fa-box-tissue"></i></h4>
+                                <p class="cast-subtitle">"La cousine magicienne"</p>
+                                <ul class="cast-traits">
+                                    <li>Maitresse d'école</li>
+                                    <li>Est tout le temps malade</li>
+                                    <li>Une maquilleuse hors pair</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Lucas -->
+                        <div class="cast-card">
+                            <div class="cast-img-wrapper">
+                                <img src="assets/lucas.jpg" alt="Lucas" class="cast-img"
+                                    onerror="this.src='https://placehold.co/400x500/121a2b/ffffff?text=Lucas'">
+                            </div>
+                            <div class="cast-info">
+                                <h4 class="cast-name">Lucas <i class="fas fa-gamepad"></i></h4>
+                                <p class="cast-subtitle">"Le fragile de la famille"</p>
+                                <ul class="cast-traits">
+                                    <li>Est toujours au courant le dernier</li>
+                                    <li>Joue les ado rebelle</li>
+                                    <li>Un peu geek sur les bords</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Tara -->
+                        <div class="cast-card">
+                            <div class="cast-img-wrapper">
+                                <img src="assets/tara.jpg" alt="Tara" class="cast-img"
+                                    onerror="this.src='https://placehold.co/400x500/121a2b/ffffff?text=Tara'">
+                            </div>
+                            <div class="cast-info">
+                                <h4 class="cast-name">Tara <i class="fas fa-shopping-bag"></i></h4>
+                                <p class="cast-subtitle">"La blonde"</p>
+                                <ul class="cast-traits">
+                                    <li>Fantasme sur les médecins de sa meilleure amie</li>
+                                    <li>Aime Noah comme un chat aime un chien</li>
+                                    <li>Est en flirt avec le cousin de sa meilleure amie depuis des années</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Camille -->
+                        <div class="cast-card">
+                            <div class="cast-img-wrapper">
+                                <img src="assets/camille.jpg" alt="Camille" class="cast-img"
+                                    onerror="this.src='https://placehold.co/400x500/121a2b/ffffff?text=Camille'">
+                            </div>
+                            <div class="cast-info">
+                                <h4 class="cast-name">Camille <i class="fas fa-user-secret"></i></h4>
+                                <p class="cast-subtitle">"Le plot-twist de l'histoire"</p>
+                                <ul class="cast-traits">
+                                    <li>Débarque de nulle part</li>
+                                    <li>Sans elle, y'a plus d'histoire</li>
+                                    <li>Si j'en dis plus, je spoile</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Jackson -->
+                        <div class="cast-card">
+                            <div class="cast-img-wrapper">
+                                <img src="assets/jackson.jpg" alt="Jackson" class="cast-img"
+                                    onerror="this.src='https://placehold.co/400x500/121a2b/ffffff?text=Jackson'">
+                            </div>
+                            <div class="cast-info">
+                                <h4 class="cast-name">Jackson <i class="fas fa-heart-broken"></i></h4>
+                                <p class="cast-subtitle">"Le mec qui n'assume pas"</p>
+                                <ul class="cast-traits">
+                                    <li>Adore pousser Noah à bout</li>
+                                    <li>Aussi blagueur que charmeur</li>
+                                    <li>Cache bien son jeu</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Mael -->
+                        <div class="cast-card">
+                            <div class="cast-img-wrapper">
+                                <img src="assets/mael.jpg" alt="Mael" class="cast-img"
+                                    onerror="this.src='https://placehold.co/400x500/121a2b/ffffff?text=Mael'">
+                            </div>
+                            <div class="cast-info">
+                                <h4 class="cast-name">Maël <i class="fas fa-basketball-ball"></i></h4>
+                                <p class="cast-subtitle">"Le psy des couples"</p>
+                                <ul class="cast-traits">
+                                    <li>Discret, réfléchi, observateur</li>
+                                    <li>Cerveau du jeu mais refuse d'être capitaine</li>
+                                    <li>Est au courant de tout mais ne dit rien</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Set -->
+                        <div class="cast-card">
+                            <div class="cast-img-wrapper">
+                                <img src="assets/set.jpg" alt="Set" class="cast-img"
+                                    onerror="this.src='https://placehold.co/400x500/121a2b/ffffff?text=Set'">
+                            </div>
+                            <div class="cast-info">
+                                <h4 class="cast-name">Set <i class="fas fa-basketball-ball"></i></h4>
+                                <p class="cast-subtitle">"Le blagueur-charmeur"</p>
+                                <ul class="cast-traits">
+                                    <li>Se fait victimiser par son équipe</li>
+                                    <li>A directement cerné le petit jeu entre Noah et Lia</li>
+                                    <li>A toujours de fausses bonnes idées</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Mike -->
+                        <div class="cast-card">
+                            <div class="cast-img-wrapper">
+                                <img src="assets/mike.jpg" alt="Mike" class="cast-img"
+                                    onerror="this.src='https://placehold.co/400x500/121a2b/ffffff?text=Mike'">
+                            </div>
+                            <div class="cast-info">
+                                <h4 class="cast-name">Mike <i class="fas fa-basketball-ball"></i></h4>
+                                <p class="cast-subtitle">"Le p'tit nouveau"</p>
+                                <ul class="cast-traits">
+                                    <li>Joueur de basket</li>
+                                    <li>Remplaçant une mi-temps sur deux</li>
+                                    <li>A osé dire à Noah qu'il est mignon</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Nolan -->
+                        <div class="cast-card">
+                            <div class="cast-img-wrapper">
+                                <img src="assets/nolan.jpg" alt="Nolan" class="cast-img"
+                                    onerror="this.src='https://placehold.co/400x500/121a2b/ffffff?text=Nolan'">
+                            </div>
+                            <div class="cast-info">
+                                <h4 class="cast-name">Nolan <i class="fas fa-basketball-ball"></i></h4>
+                                <p class="cast-subtitle">"L'autre petit nouveau de l'équipe"</p>
+                                <ul class="cast-traits">
+                                    <li>Basketteur</li>
+                                    <li>Joue la mi-temps que Mike ne joue pas</li>
+                                    <li>Un peu invisible pour le moment</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div> <!-- End casting-track -->
+                    <button class="carousel-btn next-btn" aria-label="Personnage suivant"><i
+                            class="fas fa-chevron-right"></i></button>
+                </div> <!-- End carousel-container -->
+            </div>
+        </section>
+
+        <!-- NOUVELLE SECTION : Constellations interactives (Le Scorpion) -->
+        <section class="constellation-section">
+            <div class="container reveal">
+                <h3 class="section-title text-center">Découvrez leurs failles</h3>
+                <p class="text-center mb-2">Passez sur les étoiles du Scorpion pour révéler les secrets de Lia et
+                    Noah...</p>
+                <div class="constellation-map">
+                    <!-- Pince Gauche (Graffias) -->
+                    <div class="star-node" style="top: 15%; left: 25%;">
+                        <div class="star-glow" style="transform:scale(0.8)"></div>
+                    </div>
+                    <!-- Pince Droite (Dschubba) -->
+                    <div class="star-node" style="top: 25%; left: 30%;">
+                        <div class="star-glow" style="transform:scale(0.9)"></div>
+                        <div class="star-info">
+                            <h4>Marc</h4>
+                            <p>Le grand frère protecteur, qui essaie de retenir Lia à la vie. "Je ne l'ai jamais voulu
+                                t'abandonner."</p>
+                        </div>
+                    </div>
+                    <!-- Front (Acrab) -->
+                    <div class="star-node" style="top: 10%; left: 45%;">
+                        <div class="star-glow" style="transform:scale(0.8)"></div>
+                        <div class="star-info">
+                            <h4>La Mère (L'Étoile polaire)</h4>
+                            <p>"Maintenant que ma maman brille à leurs côtés..." Le souvenir qui hante Lia et Marc.</p>
+                        </div>
+                    </div>
+
+                    <!-- Antares (Cœur du scorpion) -->
+                    <div class="star-node" style="top: 40%; left: 45%;">
+                        <div class="star-glow"
+                            style="background:#fbbf24;box-shadow:0 0 20px #fbbf24;transform:scale(1.2)"></div>
+                        <div class="star-info">
+                            <h4>Lia</h4>
+                            <p>"J’ai un putain de cancer en moi merde !" L’étoile centrale, lumineuse mais dévorée de
+                                l'intérieur.</p>
+                        </div>
+                    </div>
+
+                    <!-- Corps section 1 (Wei) -->
+                    <div class="star-node" style="top: 60%; left: 55%;">
+                        <div class="star-glow" style="transform:scale(0.9)"></div>
+                        <div class="star-info">
+                            <h4>La Leucémie</h4>
+                            <p>Stade trois. Le venin invisible qui coule dans ses veines.</p>
+                        </div>
+                    </div>
+
+                    <!-- Corps section 2 (Sargas) -->
+                    <div class="star-node" style="top: 80%; left: 55%;">
+                        <div class="star-glow" style="transform:scale(0.9)"></div>
+                        <div class="star-info">
+                            <h4>Le Deuil de Noah</h4>
+                            <p>Il a perdu un proche il y a 5 ans. Une blessure toujours ouverte sous son arrogance.</p>
+                        </div>
+                    </div>
+
+                    <!-- Amorce de la queue (Girtab) -->
+                    <div class="star-node" style="top: 85%; left: 75%;">
+                        <div class="star-glow" style="transform:scale(0.7)"></div>
+                    </div>
+
+                    <!-- Boucle de la queue (Shaula / Lesath) -->
+                    <div class="star-node" style="top: 70%; left: 85%;">
+                        <div class="star-glow" style="transform:scale(0.8)"></div>
+                    </div>
+
+                    <!-- Le Dard (Noah - modifié pour terminer la boucle) -->
+                    <div class="star-node" style="top: 60%; left: 75%;">
+                        <div class="star-glow"
+                            style="background:#ef4444;box-shadow:0 0 15px #ef4444;transform:scale(1.1)"></div>
+                        <div class="star-info">
+                            <h4>Noah (Le Dard)</h4>
+                            <p>Sombre, dangereux, et prêt à piquer. "Tu vas m’écouter, petite peste... ça va mal se
+                                finir pour toi."</p>
+                        </div>
+                    </div>
+
+                    <!-- SVG lines connecting stars (Full Scorpius Shape) -->
+                    <svg class="constellation-lines" width="100%" height="100%">
+                        <!-- Pince gauche vers pince droite -->
+                        <line x1="25%" y1="15%" x2="30%" y2="25%" />
+                        <!-- Pince droite vers Antares -->
+                        <line x1="30%" y1="25%" x2="45%" y2="40%" />
+                        <!-- Front vers Antares -->
+                        <line x1="45%" y1="10%" x2="45%" y2="40%" />
+                        <!-- Antares vers Corps 1 -->
+                        <line x1="45%" y1="40%" x2="55%" y2="60%" />
+                        <!-- Corps 1 vers Corps 2 -->
+                        <line x1="55%" y1="60%" x2="55%" y2="80%" />
+                        <!-- Corps 2 vers début queue -->
+                        <line x1="55%" y1="80%" x2="75%" y2="85%" />
+                        <!-- Début queue vers boucle -->
+                        <line x1="75%" y1="85%" x2="85%" y2="70%" />
+                        <!-- Boucle vers le dard -->
+                        <line x1="85%" y1="70%" x2="75%" y2="60%" />
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- NOUVELLE SECTION : À propos de l'auteure -->
+        <section class="author-section" id="author">
+            <div class="container reveal">
+                <div class="author-layout">
+                    <div class="author-image-wrapper">
+                        <img src="assets/marie.jpg" alt="L'auteure" class="author-img" id="author-photo">
+                    </div>
+                    <div class="author-text">
+                        <h3 class="section-title">À propos de l'auteure</h3>
+                        <p class="author-bio mb-2">
+                            [Espace réservé pour la description de l'auteure. Parlez ici de vous, de vos inspirations,
+                            de votre parcours sur Wattpad, de ce qui vous a poussé à écrire ce livre, etc.]
+                        </p>
+                        <div class="author-socials">
+                            <a href="https://www.instagram.com/mcoune222017/" target="_blank" class="btn btn-social"
+                                title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.wattpad.com/user/mdefossez10" target="_blank" class="btn btn-social"
+                                title="Wattpad">
+                                <i class="fas fa-book-open"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NOUVELLE SECTION : Teaser Tome 2 -->
+        <section class="teaser-section">
+            <div class="container reveal">
+                <div class="teaser-card">
+                    <h3 class="section-title text-center">L'histoire ne fait que commencer...</h3>
+                    <div class="teaser-content text-center">
+                        <h4>Tome 2 : To The Moon</h4>
+                        <p>Découvrez la suite tant attendue des aventures de Lia et Noah. Les démons sont-ils vraiment
+                            vaincus ? La maladie laissera-t-elle un répit à notre étoile mourante ?</p>
+                        <p class="highlight-text mb-2">Lisez la suite en exclusivité et gratuitement !</p>
+                        <a href="https://www.wattpad.com/story/344940410-my-star-to-the-sky-tome-2-to-the-moon"
+                            target="_blank" class="btn btn-primary pulse-btn">
+                            <i class="fas fa-book-reader"></i> Découvrir sur Wattpad
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Site Promotionnel pour "My Star in the Sky" | L'œuvre appartient à Mary Coune.</p>
+            <p class="disclaimer">Ceci est une page de présentation non-officielle ou d'exemple. Les liens renvoient
+                vers la page d'achat légitime.</p>
+        </div>
+    </footer>
+    <!-- Scripts -->
+    <script src="main.js"></script>
+</body>
+
+</html>
