@@ -53,11 +53,11 @@ function render() {
     stars.forEach(star => {
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-        
+
         // Twinkling effect
         star.alpha += (Math.random() - 0.5) * 0.05;
-        if(star.alpha < 0.1) star.alpha = 0.1;
-        if(star.alpha > 1) star.alpha = 1;
+        if (star.alpha < 0.1) star.alpha = 0.1;
+        if (star.alpha > 1) star.alpha = 1;
 
         ctx.fillStyle = `rgba(${star.color === '#fbbf24' ? '251, 191, 36' : '226, 232, 240'}, ${star.alpha})`;
         ctx.fill();
@@ -80,61 +80,8 @@ window.addEventListener('resize', resize);
 resize();
 render();
 
-// --- Background Music & Mute Logic ---
-const bgMusic = document.getElementById('bg-music');
-const muteBtn = document.getElementById('mute-btn');
-const muteIcon = document.getElementById('mute-icon');
-const muteText = document.getElementById('mute-text');
 
-let audioStarted = false;
-
-// Démarrer l'audio au premier clic sur la page (pour contourner le blocage autoplay des navigateurs)
-document.addEventListener('click', function(e) {
-    if (!audioStarted && bgMusic && e.target !== muteBtn && !muteBtn.contains(e.target)) {
-        bgMusic.volume = 0.4; // Volume modéré
-        let playPromise = bgMusic.play();
-        
-        if (playPromise !== undefined) {
-             playPromise.then(_ => {
-                 audioStarted = true;
-             }).catch(error => {
-                 console.log("Autoplay prevented:", error);
-             });
-        }
-    }
-}, { once: true });
-
-// Gestion du bouton Mute
-if (muteBtn && bgMusic) {
-    muteBtn.addEventListener('click', (e) => {
-        // Empêcher l'événement de se propager au document click initial
-        e.stopPropagation(); 
-        
-        // Si le son n'a pas encore démarré, on le démarre explicitement
-        if(!audioStarted) {
-            bgMusic.volume = 0.4;
-            bgMusic.play();
-            audioStarted = true;
-            return;
-        }
-
-        if (bgMusic.muted) {
-            bgMusic.muted = false;
-            muteIcon.classList.remove('fa-volume-mute');
-            muteIcon.classList.add('fa-volume-up');
-            muteText.innerText = 'Couper le son';
-            muteBtn.classList.add('pulse-btn');
-        } else {
-            bgMusic.muted = true;
-            muteIcon.classList.remove('fa-volume-up');
-            muteIcon.classList.add('fa-volume-mute');
-            muteText.innerText = 'Activer le son';
-            muteBtn.classList.remove('pulse-btn');
-        }
-    });
-}
-
-// --- Casting Carousel Logic (boucle infinie fluide) ---
+// --- Casting Carousel Logic (boucle infinie fluide & Drag-to-scroll) ---
 const castingTrack = document.getElementById('castingTrack');
 const prevBtn = document.querySelector('.prev-btn');
 const nextBtn = document.querySelector('.next-btn');
@@ -220,5 +167,38 @@ if (castingTrack && prevBtn && nextBtn) {
     prevBtn.addEventListener('click', () => {
         castingTrack.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
     });
-}
 
+    // --- Drag to Scroll (Glisser avec la souris) ---
+    let isDown = false;
+    let startX;
+    let scrollLeftPos;
+
+    castingTrack.addEventListener('mousedown', (e) => {
+        isDown = true;
+        castingTrack.classList.add('active');
+        // On désactive le scroll fluide natif pendant le drag pour que le mouvement suive exactement la souris
+        castingTrack.style.scrollBehavior = 'auto';
+        startX = e.pageX - castingTrack.offsetLeft;
+        scrollLeftPos = castingTrack.scrollLeft;
+    });
+
+    castingTrack.addEventListener('mouseleave', () => {
+        isDown = false;
+        castingTrack.classList.remove('active');
+        castingTrack.style.scrollBehavior = 'smooth'; // On réactive pour les boutons
+    });
+
+    castingTrack.addEventListener('mouseup', () => {
+        isDown = false;
+        castingTrack.classList.remove('active');
+        castingTrack.style.scrollBehavior = 'smooth';
+    });
+
+    castingTrack.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault(); // Empêche le navigateur de vouloir sélectionner du texte ou "sauvegarder" l'image
+        const x = e.pageX - castingTrack.offsetLeft;
+        const walk = (x - startX) * 1.5; // Multiplicateur de vitesse (1.5x)
+        castingTrack.scrollLeft = scrollLeftPos - walk;
+    });
+}

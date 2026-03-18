@@ -30,7 +30,7 @@
             <div class="cta-buttons text-center reveal">
                 <a href="#synopsis" class="btn btn-primary">Découvrir l'histoire</a>
                 <a href="https://amzn.eu/d/07w8DpzD" target="_blank" class="btn btn-secondary">
-                    <i class="fab fa-amazon"></i> Acheter le livre 1
+                    <i class="fab fa-amazon"></i> Acheter le tome 1
                 </a>
                 <a href="https://www.instagram.com/mcoune222017/" target="_blank" class="btn btn-social"
                     title="Suivre sur Instagram">
@@ -70,8 +70,27 @@
                         </a>
                     </div>
                     <div class="synopsis-image">
-                        <img src="assets/couple.png" alt="Illustration conceptuelle de Noah et Lia sous les étoiles"
-                            class="floating-img">
+                        <div class="book-container floating-book">
+                            <div class="book">
+                                <div class="book-front">
+                                    <div class="book-cover-design">
+                                        <div class="book-cover-bg">
+                                            <img src="assets/book_cover.jpg" alt="Couverture officielle - My Star in the Sky">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="book-back"></div>
+                                <div class="book-spine">
+                                    <div class="book-spine-content">
+                                        <span class="spine-author">Mary Coune</span>
+                                        <span class="spine-title">My Star in the Sky - Tome 1</span>
+                                    </div>
+                                </div>
+                                <div class="book-pages"></div>
+                                <div class="book-top"></div>
+                                <div class="book-bottom"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -80,19 +99,7 @@
         <!-- NOUVELLE SECTION : Extrait -->
         <section class="excerpt-section">
             <div class="container reveal">
-                <!-- Bouton de contrôle audio -->
-                <div class="audio-control-container text-center mb-2">
-                    <!-- Bouton Mute Personnalisé -->
-                    <button id="mute-btn" class="btn btn-outline pulse-btn">
-                        <i class="fas fa-volume-up" id="mute-icon"></i> <span id="mute-text">Couper le son</span>
-                    </button>
-                    <!-- Lecteur audio standard HTML5 masqué (sans controls) -->
-                    <!-- Note sur l'autoplay : Il lancera la musique au premier clic sur la page si bloqué, mais on l'active par JS -->
-                    <audio id="bg-music" loop>
-                        <source src="audio/James%20Arthur%20-%20Say%20You%20Wont%20Let%20Go.mp3" type="audio/mpeg">
-                        Votre navigateur ne supporte pas cet élément audio.
-                    </audio>
-                </div>
+
 
                 <div class="book-excerpt-container" id="prologue-container">
                     <h3 class="section-title text-center">Prologue</h3>
@@ -123,6 +130,16 @@
                         <p>Maintenant, nous devons en subir les conséquences, qui, j’en suis sûre, ne nous laisseront
                             pas indemnes.</p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NOUVELLE SECTION : Playlist -->
+        <section class="playlist-section" id="playlist">
+            <div class="container reveal">
+                <h2 class="section-title text-center">Bande Originale</h2>
+                <div class="spotify-embed-container" style="max-width: 800px; margin: 0 auto;">
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/7mRsDWx9OL5OiwKus2POk7?utm_source=generator&theme=0" width="100%" height="550" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 </div>
             </div>
         </section>
@@ -401,96 +418,113 @@
                 <p class="text-center mb-2">Passez sur les étoiles du Scorpion pour révéler les secrets de Lia et
                     Noah...</p>
                 <div class="constellation-map">
-                    <!-- Pince Gauche (Graffias) -->
-                    <div class="star-node" style="top: 15%; left: 25%;">
+
+                    <!-- Head branches -->
+                    <div class="star-node" style="top: 5%; left: 95%;">
+                        <div class="star-glow" style="transform:scale(1.2)"></div>
+                    </div>
+                    <div class="star-node" style="top: 20%; left: 95%;">
+                        <div class="star-glow" style="transform:scale(1.2)"></div>
+                    </div>
+                    <div class="star-node" style="top: 35%; left: 90%;">
                         <div class="star-glow" style="transform:scale(0.8)"></div>
                     </div>
-                    <!-- Pince Droite (Dschubba) -->
-                    <div class="star-node" style="top: 25%; left: 30%;">
-                        <div class="star-glow" style="transform:scale(0.9)"></div>
+                    
+                    <!-- Head intersection -->
+                    <div class="star-node" style="top: 25%; left: 75%;">
+                        <div class="star-glow" style="transform:scale(0.8)"></div>
+                    </div>
+                    
+                    <!-- Body -->
+                    <div class="star-node" style="top: 25%; left: 65%;">
+                        <div class="star-glow" style="transform:scale(1.3)"></div>
                         <div class="star-info">
                             <h4>Marc</h4>
-                            <p>Le grand frère protecteur, qui essaie de retenir Lia à la vie. "Je ne l'ai jamais voulu
-                                t'abandonner."</p>
+                            <p>Le grand frère protecteur, qui essaie de retenir Lia à la vie.</p>
                         </div>
                     </div>
-                    <!-- Front (Acrab) -->
-                    <div class="star-node" style="top: 10%; left: 45%;">
+                    
+                    <div class="star-node" style="top: 35%; left: 55%;">
                         <div class="star-glow" style="transform:scale(0.8)"></div>
+                    </div>
+                    
+                    <!-- Antares -->
+                    <div class="star-node" style="top: 45%; left: 40%;">
+                        <div class="star-glow" style="transform:scale(1.5)"></div>
                         <div class="star-info">
-                            <h4>La Mère (L'Étoile polaire)</h4>
-                            <p>"Maintenant que ma maman brille à leurs côtés..." Le souvenir qui hante Lia et Marc.</p>
+                            <h4>Lia (Antares)</h4>
+                            <p>L’étoile centrale, lumineuse mais dévorée de l'intérieur.</p>
                         </div>
                     </div>
-
-                    <!-- Antares (Cœur du scorpion) -->
-                    <div class="star-node" style="top: 40%; left: 45%;">
-                        <div class="star-glow"
-                            style="background:#fbbf24;box-shadow:0 0 20px #fbbf24;transform:scale(1.2)"></div>
-                        <div class="star-info">
-                            <h4>Lia</h4>
-                            <p>"J’ai un putain de cancer en moi merde !" L’étoile centrale, lumineuse mais dévorée de
-                                l'intérieur.</p>
-                        </div>
+                    
+                    <!-- Tail Curve -->
+                    <div class="star-node" style="top: 60%; left: 32%;">
+                        <div class="star-glow" style="transform:scale(0.8)"></div>
                     </div>
-
-                    <!-- Corps section 1 (Wei) -->
-                    <div class="star-node" style="top: 60%; left: 55%;">
+                    
+                    <div class="star-node" style="top: 80%; left: 25%;">
                         <div class="star-glow" style="transform:scale(0.9)"></div>
                         <div class="star-info">
                             <h4>La Leucémie</h4>
-                            <p>Stade trois. Le venin invisible qui coule dans ses veines.</p>
+                            <p>Le venin invisible qui coule dans ses veines.</p>
                         </div>
                     </div>
-
-                    <!-- Corps section 2 (Sargas) -->
-                    <div class="star-node" style="top: 80%; left: 55%;">
-                        <div class="star-glow" style="transform:scale(0.9)"></div>
+                    
+                    <div class="star-node" style="top: 75%; left: 12%;">
+                        <div class="star-glow" style="transform:scale(0.8)"></div>
+                    </div>
+                    
+                    <div class="star-node" style="top: 60%; left: 5%;">
+                        <div class="star-glow" style="transform:scale(1.1)"></div>
                         <div class="star-info">
                             <h4>Le Deuil de Noah</h4>
-                            <p>Il a perdu un proche il y a 5 ans. Une blessure toujours ouverte sous son arrogance.</p>
+                            <p>Une blessure toujours ouverte sous son arrogance.</p>
                         </div>
                     </div>
-
-                    <!-- Amorce de la queue (Girtab) -->
-                    <div class="star-node" style="top: 85%; left: 75%;">
-                        <div class="star-glow" style="transform:scale(0.7)"></div>
+                    
+                    <div class="star-node" style="top: 45%; left: 5%;">
+                        <div class="star-glow" style="transform:scale(0.8)"></div>
                     </div>
-
-                    <!-- Boucle de la queue (Shaula / Lesath) -->
-                    <div class="star-node" style="top: 70%; left: 85%;">
+                    
+                    <div class="star-node" style="top: 40%; left: 10%;">
+                        <div class="star-glow" style="transform:scale(0.8)"></div>
+                    </div>
+                    
+                    <!-- Stinger -->
+                    <div class="star-node" style="top: 35%; left: 18%;">
+                        <div class="star-glow" style="transform:scale(1.3)"></div>
+                        <div class="star-info">
+                            <h4>Noah (Le Dard)</h4>
+                            <p>Sombre, dangereux, et prêt à piquer.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="star-node" style="top: 40%; left: 22%;">
                         <div class="star-glow" style="transform:scale(0.8)"></div>
                     </div>
 
-                    <!-- Le Dard (Noah - modifié pour terminer la boucle) -->
-                    <div class="star-node" style="top: 60%; left: 75%;">
-                        <div class="star-glow"
-                            style="background:#ef4444;box-shadow:0 0 15px #ef4444;transform:scale(1.1)"></div>
-                        <div class="star-info">
-                            <h4>Noah (Le Dard)</h4>
-                            <p>Sombre, dangereux, et prêt à piquer. "Tu vas m’écouter, petite peste... ça va mal se
-                                finir pour toi."</p>
-                        </div>
-                    </div>
-
-                    <!-- SVG lines connecting stars (Full Scorpius Shape) -->
                     <svg class="constellation-lines" width="100%" height="100%">
-                        <!-- Pince gauche vers pince droite -->
-                        <line x1="25%" y1="15%" x2="30%" y2="25%" />
-                        <!-- Pince droite vers Antares -->
-                        <line x1="30%" y1="25%" x2="45%" y2="40%" />
-                        <!-- Front vers Antares -->
-                        <line x1="45%" y1="10%" x2="45%" y2="40%" />
-                        <!-- Antares vers Corps 1 -->
-                        <line x1="45%" y1="40%" x2="55%" y2="60%" />
-                        <!-- Corps 1 vers Corps 2 -->
-                        <line x1="55%" y1="60%" x2="55%" y2="80%" />
-                        <!-- Corps 2 vers début queue -->
-                        <line x1="55%" y1="80%" x2="75%" y2="85%" />
-                        <!-- Début queue vers boucle -->
-                        <line x1="75%" y1="85%" x2="85%" y2="70%" />
-                        <!-- Boucle vers le dard -->
-                        <line x1="85%" y1="70%" x2="75%" y2="60%" />
+                        <!-- Head branches -->
+                        <line x1="75%" y1="25%" x2="95%" y2="5%" />
+                        <line x1="75%" y1="25%" x2="95%" y2="20%" />
+                        <line x1="75%" y1="25%" x2="90%" y2="35%" />
+                        
+                        <!-- Body -->
+                        <line x1="75%" y1="25%" x2="65%" y2="25%" />
+                        <line x1="65%" y1="25%" x2="55%" y2="35%" />
+                        <line x1="55%" y1="35%" x2="40%" y2="45%" />
+                        <line x1="40%" y1="45%" x2="32%" y2="60%" />
+                        <line x1="32%" y1="60%" x2="25%" y2="80%" />
+                        
+                        <!-- Tail Curve -->
+                        <line x1="25%" y1="80%" x2="12%" y2="75%" />
+                        <line x1="12%" y1="75%" x2="5%" y2="60%" />
+                        <line x1="5%" y1="60%" x2="5%" y2="45%" />
+                        <line x1="5%" y1="45%" x2="10%" y2="40%" />
+                        <line x1="10%" y1="40%" x2="18%" y2="35%" />
+                        
+                        <!-- Stinger tip -->
+                        <line x1="18%" y1="35%" x2="22%" y2="40%" />
                     </svg>
                 </div>
             </div>
