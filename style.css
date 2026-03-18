@@ -464,7 +464,7 @@ footer p {
 
 /* ========== AUDIO & EXCERPT SECTION ========== */
 .excerpt-section {
-    background: radial-gradient(circle at center, rgba(18, 26, 43, 0.8) 0%, rgba(10, 14, 23, 1) 100%);
+    background: var(--bg-card);
     border-top: 1px solid rgba(251, 191, 36, 0.1);
 }
 
@@ -739,6 +739,12 @@ footer p {
     -ms-overflow-style: none;
     /* IE and Edge */
     width: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.casting-track.ready {
+    opacity: 1;
 }
 
 .casting-track::-webkit-scrollbar {
@@ -747,7 +753,7 @@ footer p {
 }
 
 .cast-card {
-    background: rgba(10, 14, 23, 0.7);
+    background: rgba(10, 14, 23, 1);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     overflow: hidden;
@@ -757,6 +763,9 @@ footer p {
     min-width: 280px;
     max-width: 280px;
     flex: 0 0 auto;
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 .cast-card:hover {
@@ -768,27 +777,21 @@ footer p {
 .cast-img-wrapper {
     width: 100%;
     height: 300px;
-    /* Reduced so it balances well with info */
     overflow: hidden;
     position: relative;
-    background: var(--bg-dark);
-    z-index: 1;
-    transform: translateZ(0);
-    /* Fixes Safari overflow: hidden bugs on transform */
+    background: rgba(10, 14, 23, 1);
 }
 
 .cast-img-wrapper::after {
     content: '';
     position: absolute;
-    bottom: -2px;
-    /* Pulls it down to cover any 1px gap */
+    bottom: -1px;
     left: 0;
     width: 100%;
     height: 40%;
     background: linear-gradient(to top, rgba(10, 14, 23, 1) 0%, transparent 100%);
     z-index: 10;
     pointer-events: none;
-    transform: translateZ(0);
 }
 
 .cast-img {
@@ -797,9 +800,7 @@ footer p {
     object-fit: cover;
     object-position: top;
     transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-    position: relative;
-    z-index: 2;
-    will-change: transform;
+    display: block;
 }
 
 .cast-card:hover .cast-img {
@@ -812,6 +813,7 @@ footer p {
     display: flex;
     flex-direction: column;
     background: rgba(10, 14, 23, 1);
+    margin-top: -1px;
 }
 
 .cast-name {
