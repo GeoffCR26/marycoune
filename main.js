@@ -202,3 +202,99 @@ if (castingTrack && prevBtn && nextBtn) {
         castingTrack.scrollLeft = scrollLeftPos - walk;
     });
 }
+
+// --- 3D Book Interactive Drag-to-Rotate Only ---
+const bookContainer = document.querySelector('.book-container');
+const book = document.querySelector('.book');
+
+if (bookContainer && book) {
+    let isDraggingBook = false;
+    let startX = 0;
+    let startY = 0;
+    
+    // Angles actuels
+    let currentRotX = 15;
+    let currentRotY = -30;
+    
+    // Angles au début du drag
+    let startDragRotX = 15;
+    let startDragRotY = -30;
+
+    const startDrag = (e) => {
+        // Empêche le navigateur de lancer un drag-and-drop natif sur les images
+        if (e.type === 'mousedown') {
+            e.preventDefault();
+        }
+        
+        isDraggingBook = true;
+        // Effet de pop lors de la saisie
+        book.style.transition = 'transform 0.1s ease-out';
+        book.style.transform = `rotateY(${currentRotY}deg) rotateX(${currentRotX}deg) scale(1.05)`;
+        bookContainer.style.cursor = 'grabbing';
+        
+        startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+        startY = e.type.includes('mouse') ? e.pageY : e.touches[0].pageY;
+        
+        startDragRotX = currentRotX;
+        startDragRotY = currentRotY;
+        
+        // On enlève la transition au bout de l'effet "pop" pour suivre doucement le curseur
+        setTimeout(() => {
+            if(isDraggingBook) book.style.transition = 'none';
+        }, 100);
+    };
+
+    const moveDrag = (e) => {
+        if (!isDraggingBook) return;
+        
+        const currentX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+        const currentY = e.type.includes('mouse') ? e.pageY : e.touches[0].pageY;
+        
+        const diffX = currentX - startX;
+        const diffY = currentY - startY;
+        
+        currentRotY = startDragRotY + (diffX * 0.5);
+        currentRotX = startDragRotX - (diffY * 0.5);
+        
+        // Limites pour ne pas se retrouver totalement à l'envers
+        if (currentRotX > 80) currentRotX = 80;
+        if (currentRotX < -80) currentRotX = -80;
+
+        book.style.transform = `rotateY(${currentRotY}deg) rotateX(${currentRotX}deg) scale(1.05)`;
+    };
+
+    const endDrag = () => {
+        if (!isDraggingBook) return;
+        isDraggingBook = false;
+        bookContainer.style.cursor = 'grab';
+        
+        // On remet une transition légère pour le retour à l'échelle normale (scale 1)
+        book.style.transition = 'transform 0.3s ease-out';
+        book.style.transform = `rotateY(${currentRotY}deg) rotateX(${currentRotX}deg)`;
+    };
+
+    // Events Souris
+    bookContainer.addEventListener('mousedown', startDrag);
+    window.addEventListener('mousemove', moveDrag);
+    window.addEventListener('mouseup', endDrag);
+
+    // Events Tactiles
+    bookContainer.addEventListener('touchstart', (e) => {
+        if(e.cancelable) e.preventDefault(); 
+        startDrag(e);
+    }, { passive: false });
+    window.addEventListener('touchmove', moveDrag, { passive: false });
+    window.addEventListener('touchend', endDrag);
+    
+    // Initialisation
+    bookContainer.style.cursor = 'grab';
+    book.style.transform = `rotateY(${currentRotY}deg) rotateX(${currentRotX}deg)`;
+    
+    // Réinitialisation au double-clic
+    bookContainer.addEventListener('dblclick', () => {
+        currentRotX = 15;
+        currentRotY = -30;
+        book.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+        book.style.transform = `rotateY(${currentRotY}deg) rotateX(${currentRotX}deg)`;
+    });
+}
