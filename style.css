@@ -823,6 +823,26 @@ footer p {
     line-height: 1.4;
 }
 
+/* Custom tooltips directions */
+.star-node.align-left .star-info {
+    left: auto;
+    right: 30px;
+    transform: translateX(20px);
+}
+.star-node.align-left:hover .star-info {
+    transform: translateX(0);
+}
+
+.star-node.align-center .star-info {
+    left: 50%;
+    top: auto;
+    bottom: 30px;
+    transform: translate(-50%, 20px);
+}
+.star-node.align-center:hover .star-info {
+    transform: translate(-50%, 0);
+}
+
 .constellation-lines {
     position: absolute;
     top: 0;
@@ -1237,6 +1257,19 @@ footer p {
 
     .book-excerpt-container {
         padding: 1.5rem;
+    }
+    
+    .star-info {
+        width: 180px;
+        padding: 0.8rem;
+    }
+    
+    .star-info h4 {
+        font-size: 0.9rem;
+    }
+    
+    .star-info p {
+        font-size: 0.8rem;
     }
     
     .teaser-card {
