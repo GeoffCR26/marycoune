@@ -688,7 +688,7 @@ footer p {
 .constellation-map {
     position: relative;
     width: 100%;
-    height: 450px;
+    aspect-ratio: 800 / 450;
     max-width: 800px;
     margin: 3rem auto;
 }
@@ -1065,6 +1065,7 @@ footer p {
 
 .author-image-wrapper {
     flex: 0 0 250px;
+    width: 250px;
     height: 250px;
     border-radius: 50%;
     overflow: hidden;
@@ -1153,11 +1154,7 @@ footer p {
 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 1024px) {
-    .constellation-map {
-        transform: scale(0.85);
-        transform-origin: center;
-        margin: 1rem auto;
-    }
+    /* Removed constellation scale, aspect-ratio handles it now */
 }
 
 @media (max-width: 900px) {
@@ -1245,30 +1242,34 @@ footer p {
     .teaser-card {
         padding: 1.5rem;
     }
-    
-    .constellation-map {
-        transform: scale(0.65);
-        transform-origin: top center;
-        height: 350px;
-        margin: 1rem auto;
-    }
 
     .cast-card {
         min-width: 250px;
         max-width: 250px;
     }
     
-    .cast-img-wrapper {
-        height: 260px;
+    .author-layout {
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+    
+    .author-image-wrapper {
+        width: 150px;
+        height: 150px;
+        flex: 0 0 150px;
+        margin: 0;
+    }
+
+    .author-text .section-title {
+        text-align: left;
+    }
+    
+    .author-text .author-bio {
+        text-align: left;
     }
 }
 
 @media (max-width: 400px) {
-    .constellation-map {
-        transform: scale(0.45);
-        height: 250px;
-    }
-    
     .book {
         transform: rotateY(-30deg) rotateX(15deg) scale(0.55);
     }
