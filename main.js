@@ -219,6 +219,15 @@ if (bookContainer && book) {
     // Angles au début du drag
     let startDragRotX = 15;
     let startDragRotY = -30;
+    
+    let currentScale = window.innerWidth <= 600 ? 0.7 : (window.innerWidth <= 900 ? 0.85 : 1);
+
+    window.addEventListener('resize', () => {
+        currentScale = window.innerWidth <= 600 ? 0.7 : (window.innerWidth <= 900 ? 0.85 : 1);
+        if (!isDraggingBook) {
+            book.style.transform = `rotateY(${currentRotY}deg) rotateX(${currentRotX}deg) scale(${currentScale})`;
+        }
+    });
 
     const startDrag = (e) => {
         // Empêche le navigateur de lancer un drag-and-drop natif sur les images
@@ -229,7 +238,7 @@ if (bookContainer && book) {
         isDraggingBook = true;
         // Effet de pop lors de la saisie
         book.style.transition = 'transform 0.1s ease-out';
-        book.style.transform = `rotateY(${currentRotY}deg) rotateX(${currentRotX}deg) scale(1.05)`;
+        book.style.transform = `rotateY(${currentRotY}deg) rotateX(${currentRotX}deg) scale(${currentScale * 1.05})`;
         bookContainer.style.cursor = 'grabbing';
         
         startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
@@ -260,7 +269,7 @@ if (bookContainer && book) {
         if (currentRotX > 80) currentRotX = 80;
         if (currentRotX < -80) currentRotX = -80;
 
-        book.style.transform = `rotateY(${currentRotY}deg) rotateX(${currentRotX}deg) scale(1.05)`;
+        book.style.transform = `rotateY(${currentRotY}deg) rotateX(${currentRotX}deg) scale(${currentScale * 1.05})`;
     };
 
     const endDrag = () => {
@@ -268,9 +277,9 @@ if (bookContainer && book) {
         isDraggingBook = false;
         bookContainer.style.cursor = 'grab';
         
-        // On remet une transition légère pour le retour à l'échelle normale (scale 1)
+        // On remet une transition légère pour le retour à l'échelle normale
         book.style.transition = 'transform 0.3s ease-out';
-        book.style.transform = `rotateY(${currentRotY}deg) rotateX(${currentRotX}deg)`;
+        book.style.transform = `rotateY(${currentRotY}deg) rotateX(${currentRotX}deg) scale(${currentScale})`;
     };
 
     // Events Souris
@@ -288,13 +297,13 @@ if (bookContainer && book) {
     
     // Initialisation
     bookContainer.style.cursor = 'grab';
-    book.style.transform = `rotateY(${currentRotY}deg) rotateX(${currentRotX}deg)`;
+    book.style.transform = `rotateY(${currentRotY}deg) rotateX(${currentRotX}deg) scale(${currentScale})`;
     
     // Réinitialisation au double-clic
     bookContainer.addEventListener('dblclick', () => {
         currentRotX = 15;
         currentRotY = -30;
         book.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-        book.style.transform = `rotateY(${currentRotY}deg) rotateX(${currentRotX}deg)`;
+        book.style.transform = `rotateY(${currentRotY}deg) rotateX(${currentRotX}deg) scale(${currentScale})`;
     });
 }
