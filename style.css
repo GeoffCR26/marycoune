@@ -537,10 +537,12 @@ section {
 
 @media (max-width: 768px) {
     .polaroid-scatter-container {
-        height: 1800px; /* Expand vertical space for mobile pile */
+        height: 1200px; /* Compressed vertical space to prevent gaps */
     }
     .polaroid {
-        width: 180px;
+        width: 140px;
+        /* Constrained horizontal scattering to stay perfectly in screen bounds */
+        left: calc(50% + (var(--left) - 50%) * 0.7);
     }
 }
 
