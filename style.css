@@ -268,10 +268,6 @@ section {
     transform: translateX(-50%);
 }
 
-.synopsis-section {
-    border-top: 1px solid rgba(251, 191, 36, 0.1);
-}
-
 .grid-2-cols {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -345,7 +341,7 @@ section {
     transform: rotateY(-15deg) rotateX(5deg) scale(1.05);
 } */
 
-.book > div {
+.book>div {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -430,8 +426,9 @@ section {
     color: var(--accent-gold);
     font-family: var(--font-heading);
     font-size: 0.8rem;
-    text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
 }
+
 .book-spine-content .spine-title {
     font-size: 1.1rem;
     color: #fff;
@@ -492,6 +489,59 @@ section {
     gap: 1.5rem;
     flex-wrap: wrap;
     align-items: center;
+}
+
+/* ========== POLAROID GALLERY ========== */
+.polaroid-gallery-section {
+    padding: 5rem 0;
+    overflow: hidden;
+    position: relative;
+    background: transparent;
+}
+
+.polaroid-scatter-container {
+    position: relative;
+    width: 100%;
+    height: 800px;
+    margin: 4rem auto;
+}
+
+.polaroid {
+    background: #fff;
+    padding: 15px 15px 50px 15px;
+    border-radius: 2px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: var(--top, 50%);
+    left: var(--left, 50%);
+    transform: translate(-50%, -50%) rotate(var(--rotation, -5deg));
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
+    cursor: pointer;
+    width: 250px;
+}
+
+.polaroid img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+    background: #e2e8f0;
+}
+
+.polaroid:hover {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1.15);
+    z-index: 100 !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 5px 15px rgba(251, 191, 36, 0.5);
+}
+
+@media (max-width: 768px) {
+    .polaroid-scatter-container {
+        height: 1800px; /* Expand vertical space for mobile pile */
+    }
+    .polaroid {
+        width: 180px;
+    }
 }
 
 /* ========== TEASER SECTION ========== */
@@ -724,7 +774,7 @@ footer p {
     height: 8px;
     background: #ffffff;
     border-radius: 50%;
-    box-shadow: 
+    box-shadow:
         0 0 4px #ffffff,
         0 0 12px var(--accent-gold),
         0 0 24px var(--accent-gold);
@@ -766,7 +816,7 @@ footer p {
 .star-node:hover .star-glow {
     transform: scale(1.6) !important;
     background: #ffffff;
-    box-shadow: 
+    box-shadow:
         0 0 8px #ffffff,
         0 0 20px var(--accent-blue),
         0 0 40px var(--accent-blue);
@@ -829,6 +879,7 @@ footer p {
     right: 30px;
     transform: translateX(20px);
 }
+
 .star-node.align-left:hover .star-info {
     transform: translateX(0);
 }
@@ -839,6 +890,7 @@ footer p {
     bottom: 30px;
     transform: translate(-50%, 20px);
 }
+
 .star-node.align-center:hover .star-info {
     transform: translate(-50%, 0);
 }
@@ -1172,6 +1224,100 @@ footer p {
     }
 }
 
+/* ========== TRIGGER WARNINGS SECTION ========== */
+.trigger-warnings-section {
+    padding: 3rem 0;
+    border-top: 1px solid rgba(251, 191, 36, 0.1);
+}
+
+.tw-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(220, 38, 38, 0.2);
+    border-radius: 12px;
+    padding: 2.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.tw-title {
+    font-family: var(--font-heading);
+    color: #ef4444; /* Subtle red for the warning */
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.tw-title i {
+    font-size: 1.2rem;
+}
+
+.tw-card p {
+    color: var(--text-main);
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+}
+
+.tw-discuss {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-style: italic;
+    color: var(--text-muted);
+}
+
+.emergency-numbers {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.emergency-box {
+    background: rgba(10, 14, 23, 0.6);
+    border: 1px solid rgba(251, 191, 36, 0.1);
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-align: left;
+    transition: var(--transition);
+}
+
+.emergency-box:hover {
+    border-color: rgba(220, 38, 38, 0.4);
+    background: rgba(10, 14, 23, 0.8);
+}
+
+.emergency-box i {
+    color: #ef4444;
+    font-size: 1.5rem;
+    background: rgba(239, 68, 68, 0.1);
+    padding: 0.8rem;
+    border-radius: 50%;
+}
+
+.emergency-box div {
+    display: flex;
+    flex-direction: column;
+}
+
+.emergency-box strong {
+    color: var(--accent-gold);
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.emergency-box span {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.3;
+}
+
 /* ========== RESPONSIVE ========== */
 @media (max-width: 1024px) {
     /* Removed constellation scale, aspect-ratio handles it now */
@@ -1185,7 +1331,7 @@ footer p {
     section {
         padding: 4rem 0;
     }
-    
+
     .grid-2-cols {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -1195,7 +1341,7 @@ footer p {
         order: 2;
         text-align: center;
     }
-    
+
     .synopsis-text .highlight-text {
         text-align: left;
     }
@@ -1208,11 +1354,11 @@ footer p {
     .hero-actions {
         flex-direction: column;
     }
-    
+
     .book {
         transform: rotateY(-30deg) rotateX(15deg) scale(0.85);
     }
-    
+
     .book-container.floating-book {
         padding: 1rem;
     }
@@ -1242,13 +1388,13 @@ footer p {
         justify-content: center;
         gap: 1rem;
     }
-    
+
     .cta-buttons .btn:not(.btn-social) {
         width: 100%;
         max-width: 300px;
         margin: 0 auto;
     }
-    
+
     .cta-buttons .btn-social {
         width: 50px;
         height: 50px;
@@ -1258,20 +1404,20 @@ footer p {
     .book-excerpt-container {
         padding: 1.5rem;
     }
-    
+
     .star-info {
         width: 180px;
         padding: 0.8rem;
     }
-    
+
     .star-info h4 {
         font-size: 0.9rem;
     }
-    
+
     .star-info p {
         font-size: 0.8rem;
     }
-    
+
     .teaser-card {
         padding: 1.5rem;
     }
@@ -1280,12 +1426,12 @@ footer p {
         min-width: 250px;
         max-width: 250px;
     }
-    
+
     .author-layout {
         align-items: flex-start;
         gap: 1.5rem;
     }
-    
+
     .author-image-wrapper {
         width: 150px;
         height: 150px;
@@ -1296,7 +1442,7 @@ footer p {
     .author-text .section-title {
         text-align: left;
     }
-    
+
     .author-text .author-bio {
         text-align: left;
     }

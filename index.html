@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <!-- FontAwesome pour les icônes -->
@@ -29,15 +29,16 @@
             <p class="author fade-in-up delay-2">Par Mary Coune</p>
             <div class="cta-buttons text-center reveal">
                 <a href="#synopsis" class="btn btn-primary">Découvrir l'histoire</a>
-                <a href="https://amzn.eu/d/07w8DpzD" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                <a href="https://amzn.eu/d/07w8DpzD" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-secondary">
                     <i class="fab fa-amazon"></i> Acheter le tome 1
                 </a>
-                <a href="https://www.instagram.com/mcoune222017/" target="_blank" rel="noopener noreferrer" class="btn btn-social"
-                    title="Suivre sur Instagram">
+                <a href="https://www.instagram.com/mcoune222017/" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-social" title="Suivre sur Instagram">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="https://www.wattpad.com/user/mdefossez10" target="_blank" rel="noopener noreferrer" class="btn btn-social"
-                    title="Lire sur Wattpad">
+                <a href="https://www.wattpad.com/user/mdefossez10" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-social" title="Lire sur Wattpad">
                     <i class="fas fa-book-open"></i>
                 </a>
             </div>
@@ -50,6 +51,40 @@
     </header>
 
     <main>
+        <!-- NOUVELLE SECTION : Avant-propos (Trigger Warnings) -->
+        <section class="trigger-warnings-section">
+            <div class="container reveal">
+                <div class="tw-card">
+                    <h3 class="tw-title"><i class="fas fa-exclamation-triangle"></i> Avant propos :</h3>
+                    <p>Ce livre est une romance psychologique qui aborde des sujets sensibles comme le cancer et le
+                        deuil.</p>
+                    <p>Certains chapitres contiennent des scènes pouvant être choquantes : violence, comportements
+                        agressifs, langage familier, tentatives de suicide, agression sexuelle et rapport au viol.</p>
+                    <p>Ces sujets ne sont pas à prendre à la légère, et peuvent heurter la sensibilité de certain.e.s.
+                        Ne lisez pas ce livre si l’un d’eux vous affecte.</p>
+                    <p class="tw-discuss">Ces numéros peuvent permettre de discuter si vous en ressentez le besoin :</p>
+
+                    <div class="emergency-numbers">
+                        <div class="emergency-box">
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <strong>0 800 05 95 95</strong>
+                                <span>permanence téléphonique à destination des victimes de viols et d’agressions
+                                    sexuelles.</span>
+                            </div>
+                        </div>
+                        <div class="emergency-box">
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <strong>3114</strong>
+                                <span>numéro national de prévention du suicide.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="synopsis" class="synopsis-section">
             <div class="container reveal">
                 <div class="grid-2-cols">
@@ -65,7 +100,8 @@
                         </p>
                         <p class="highlight-text">Quand le pire côtoie le meilleur, l’amour peut-il vraiment tout
                             réparer ? Ou risque-t-il, au contraire, de tout détruire ?</p>
-                        <a href="https://amzn.eu/d/07w8DpzD" target="_blank" rel="noopener noreferrer" class="btn btn-secondary mt-1">
+                        <a href="https://amzn.eu/d/07w8DpzD" target="_blank" rel="noopener noreferrer"
+                            class="btn btn-secondary mt-1">
                             <i class="fab fa-amazon"></i> Disponible sur Amazon
                         </a>
                     </div>
@@ -422,6 +458,73 @@
             </div>
         </section>
 
+        <!-- NOUVELLE SECTION : Souvenirs de Seattle -->
+        <section class="polaroid-gallery-section" id="gallery">
+            <div class="container reveal">
+                <h2 class="section-title text-center">Souvenirs de Seattle</h2>
+                <div class="polaroid-scatter-container">
+                    <div class="polaroid" style="--top: 10%; --left: 5%; --rotation: -12deg; z-index: 1;">
+                        <img src="assets/polaroid1.png" alt="Photo 1">
+                    </div>
+                    <div class="polaroid" style="--top: 40%; --left: 10%; --rotation: 8deg; z-index: 3;">
+                        <img src="assets/polaroid2.png" alt="Photo 2">
+                    </div>
+                    <div class="polaroid" style="--top: 75%; --left: 15%; --rotation: -6deg; z-index: 2;">
+                        <img src="assets/polaroid3.png" alt="Photo 3">
+                    </div>
+                    <div class="polaroid" style="--top: 25%; --left: 20%; --rotation: 16deg; z-index: 5;">
+                        <img src="assets/polaroid4.png" alt="Photo 4">
+                    </div>
+                    <div class="polaroid" style="--top: 60%; --left: 25%; --rotation: -25deg; z-index: 4;">
+                        <img src="assets/polaroid5.png" alt="Photo 5">
+                    </div>
+                    <div class="polaroid" style="--top: 15%; --left: 35%; --rotation: 11deg; z-index: 6;">
+                        <img src="assets/polaroid6.png" alt="Photo 6">
+                    </div>
+                    <div class="polaroid" style="--top: 45%; --left: 40%; --rotation: -17deg; z-index: 7;">
+                        <img src="assets/polaroid7.png" alt="Photo 7">
+                    </div>
+                    <div class="polaroid" style="--top: 80%; --left: 40%; --rotation: 5deg; z-index: 9;">
+                        <img src="assets/polaroid8.png" alt="Photo 8">
+                    </div>
+                    <div class="polaroid" style="--top: 25%; --left: 50%; --rotation: -11deg; z-index: 8;">
+                        <img src="assets/polaroid9.png" alt="Photo 9">
+                    </div>
+                    <div class="polaroid" style="--top: 65%; --left: 55%; --rotation: 22deg; z-index: 5;">
+                        <img src="assets/polaroid10.png" alt="Photo 10">
+                    </div>
+                    <!-- Nouvelles photos (11 à 19) -->
+                    <div class="polaroid" style="--top: 10%; --left: 65%; --rotation: 15deg; z-index: 10;">
+                        <img src="assets/polaroid11.png" alt="Photo 11">
+                    </div>
+                    <div class="polaroid" style="--top: 45%; --left: 65%; --rotation: -8deg; z-index: 12;">
+                        <img src="assets/polaroid12.png" alt="Photo 12">
+                    </div>
+                    <div class="polaroid" style="--top: 85%; --left: 70%; --rotation: -14deg; z-index: 11;">
+                        <img src="assets/polaroid13.png" alt="Photo 13">
+                    </div>
+                    <div class="polaroid" style="--top: 30%; --left: 75%; --rotation: 18deg; z-index: 4;">
+                        <img src="assets/polaroid14.png" alt="Photo 14">
+                    </div>
+                    <div class="polaroid" style="--top: 65%; --left: 80%; --rotation: -20deg; z-index: 2;">
+                        <img src="assets/polaroid15.png" alt="Photo 15">
+                    </div>
+                    <div class="polaroid" style="--top: 15%; --left: 85%; --rotation: -9deg; z-index: 14;">
+                        <img src="assets/polaroid16.png" alt="Photo 16">
+                    </div>
+                    <div class="polaroid" style="--top: 50%; --left: 90%; --rotation: 10deg; z-index: 15;">
+                        <img src="assets/polaroid17.png" alt="Photo 17">
+                    </div>
+                    <div class="polaroid" style="--top: 85%; --left: 95%; --rotation: -12deg; z-index: 13;">
+                        <img src="assets/polaroid18.png" alt="Photo 18">
+                    </div>
+                    <div class="polaroid" style="--top: 35%; --left: 95%; --rotation: 2deg; z-index: 8;">
+                        <img src="assets/polaroid19.png" alt="Photo 19">
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- NOUVELLE SECTION : Constellations interactives (Le Scorpion) -->
         <section class="constellation-section">
             <div class="container reveal">
@@ -450,8 +553,9 @@
                     <div class="star-node align-left" style="top: 25%; left: 65%;">
                         <div class="star-glow" style="transform:scale(1.3)"></div>
                         <div class="star-info">
-                            <p><i>« Pourtant, il m’a aimée... Il a enfoui ses démons pour m’aimer d’un amour qui nous lie
-                                si fort qu’il nous fait du mal. »</i></p>
+                            <p><i>« Pourtant, il m’a aimée... Il a enfoui ses démons pour m’aimer d’un amour qui nous
+                                    lie
+                                    si fort qu’il nous fait du mal. »</i></p>
                             <h4 style="text-align: right;">Lia</h4>
                         </div>
                     </div>
@@ -465,7 +569,7 @@
                         <div class="star-glow" style="transform:scale(1.5)"></div>
                         <div class="star-info">
                             <p><i>« Mais deux personnes si différentes peuvent-elles réellement se combler lorsqu’elles
-                                partagent les mêmes démons ? »</i></p>
+                                    partagent les mêmes démons ? »</i></p>
                             <h4></h4>
                         </div>
                     </div>
@@ -479,7 +583,7 @@
                         <div class="star-glow" style="transform:scale(0.9)"></div>
                         <div class="star-info">
                             <p><i>« Pourtant, en l’aimant, je la mènerai à sa perte... celle-là même qui entraînera la
-                                mienne. »</i></p>
+                                    mienne. »</i></p>
                         </div>
                     </div>
 
@@ -548,16 +652,20 @@
                     <div class="author-text">
                         <h3 class="section-title">À propos de l'auteure</h3>
                         <p class="author-bio mb-2">
-                            [Espace réservé pour la description de l'auteure. Parlez ici de vous, de vos inspirations,
-                            de votre parcours sur Wattpad, de ce qui vous a poussé à écrire ce livre, etc.]
+                            Bonjour, moi c'est Mary Coune ! J'écris depuis 3 ans sur Wattpad, où l'histoire de Lia et
+                            Noah a commencé à prendre vie. Passionnée par les dark romances et la psychologie, j'aime
+                            écrire sur des personnages imparfaits, brisés, mais profondément humains. "My Star in the
+                            Sky" n'est pas seulement une romance, c'est un bout de mon cœur que je partage avec vous.
+                            Quand je n'écris pas, on peut me trouver devant la télé en train de pleurer devant la mort
+                            de Bobby.
                         </p>
                         <div class="author-socials">
-                            <a href="https://www.instagram.com/mcoune222017/" target="_blank" rel="noopener noreferrer" class="btn btn-social"
-                                title="Instagram">
+                            <a href="https://www.instagram.com/mcoune222017/" target="_blank" rel="noopener noreferrer"
+                                class="btn btn-social" title="Instagram">
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a href="https://www.wattpad.com/user/mdefossez10" target="_blank" rel="noopener noreferrer" class="btn btn-social"
-                                title="Wattpad">
+                            <a href="https://www.wattpad.com/user/mdefossez10" target="_blank" rel="noopener noreferrer"
+                                class="btn btn-social" title="Wattpad">
                                 <i class="fas fa-book-open"></i>
                             </a>
                         </div>

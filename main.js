@@ -211,15 +211,15 @@ if (bookContainer && book) {
     let isDraggingBook = false;
     let startX = 0;
     let startY = 0;
-    
+
     // Angles actuels
     let currentRotX = 15;
     let currentRotY = -30;
-    
+
     // Angles au début du drag
     let startDragRotX = 15;
     let startDragRotY = -30;
-    
+
     let currentScale = window.innerWidth <= 600 ? 0.7 : (window.innerWidth <= 900 ? 0.85 : 1);
 
     window.addEventListener('resize', () => {
@@ -234,37 +234,37 @@ if (bookContainer && book) {
         if (e.type === 'mousedown') {
             e.preventDefault();
         }
-        
+
         isDraggingBook = true;
         // Effet de pop lors de la saisie
         book.style.transition = 'transform 0.1s ease-out';
         book.style.transform = `rotateY(${currentRotY}deg) rotateX(${currentRotX}deg) scale(${currentScale * 1.05})`;
         bookContainer.style.cursor = 'grabbing';
-        
+
         startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
         startY = e.type.includes('mouse') ? e.pageY : e.touches[0].pageY;
-        
+
         startDragRotX = currentRotX;
         startDragRotY = currentRotY;
-        
+
         // On enlève la transition au bout de l'effet "pop" pour suivre doucement le curseur
         setTimeout(() => {
-            if(isDraggingBook) book.style.transition = 'none';
+            if (isDraggingBook) book.style.transition = 'none';
         }, 100);
     };
 
     const moveDrag = (e) => {
         if (!isDraggingBook) return;
-        
+
         const currentX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
         const currentY = e.type.includes('mouse') ? e.pageY : e.touches[0].pageY;
-        
+
         const diffX = currentX - startX;
         const diffY = currentY - startY;
-        
+
         currentRotY = startDragRotY + (diffX * 0.5);
         currentRotX = startDragRotX - (diffY * 0.5);
-        
+
         // Limites pour ne pas se retrouver totalement à l'envers
         if (currentRotX > 80) currentRotX = 80;
         if (currentRotX < -80) currentRotX = -80;
@@ -276,7 +276,7 @@ if (bookContainer && book) {
         if (!isDraggingBook) return;
         isDraggingBook = false;
         bookContainer.style.cursor = 'grab';
-        
+
         // On remet une transition légère pour le retour à l'échelle normale
         book.style.transition = 'transform 0.3s ease-out';
         book.style.transform = `rotateY(${currentRotY}deg) rotateX(${currentRotX}deg) scale(${currentScale})`;
@@ -289,16 +289,16 @@ if (bookContainer && book) {
 
     // Events Tactiles
     bookContainer.addEventListener('touchstart', (e) => {
-        if(e.cancelable) e.preventDefault(); 
+        if (e.cancelable) e.preventDefault();
         startDrag(e);
     }, { passive: false });
     window.addEventListener('touchmove', moveDrag, { passive: false });
     window.addEventListener('touchend', endDrag);
-    
+
     // Initialisation
     bookContainer.style.cursor = 'grab';
     book.style.transform = `rotateY(${currentRotY}deg) rotateX(${currentRotX}deg) scale(${currentScale})`;
-    
+
     // Réinitialisation au double-clic
     bookContainer.addEventListener('dblclick', () => {
         currentRotX = 15;
