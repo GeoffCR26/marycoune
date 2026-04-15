@@ -307,3 +307,222 @@ if (bookContainer && book) {
         book.style.transform = `rotateY(${currentRotY}deg) rotateX(${currentRotX}deg) scale(${currentScale})`;
     });
 }
+
+// --- Vintage Music Player Logic ---
+const playlistData = [
+    { chapter: "Chapitre 1", quote: "Between the heaven and the embers", song: "In The Stars - Benson Boon", file: "assets/Benson Boone - In the Stars.mp3" },
+    { chapter: "Chapitre 2", quote: "I better run", song: "Runaway Baby - Bruno Mars", file: "assets/Runaway Baby - Bruno Mars.mp3" },
+    { chapter: "Chapitre 3", quote: "We fall", song: "Atlantis - Seafret", file: "assets/Seafret - Atlantis.mp3" },
+    { chapter: "Chapitre 4", quote: "Something toxic", song: "I Was Never There - The Weeknd", file: "assets/The Weeknd - I Was Never There.mp3" },
+    { chapter: "Chapitre 5", quote: "I play with your heart", song: "Oops I Did It Again - Britney Spears", file: "assets/Britney Spears - Oops!... I Did It Again.mp3" },
+    { chapter: "Chapitre 6", quote: "Take my pain", song: "Heal - Tom Odell", file: "assets/Tom Odell - Heal.mp3" },
+    { chapter: "Chapitre 7", quote: "The only way to heal", song: "My Blood - Ellie Goulding", file: "assets/Ellie Goulding - My Blood.mp3" },
+    { chapter: "Chapitre 8", quote: "Kill my desire", song: "Play With Fire - Nico Santos", file: "assets/Nico Santos - Play With Fire.mp3" },
+    { chapter: "Chapitre 9", quote: "You can do everything", song: "Angel By The Wings – Sia", file: "assets/Angel By The Wings - Sia.mp3" },
+    { chapter: "Chapitre 10", quote: "I hear your SOS", song: "Rescue - Lauren Daigle", file: "assets/Lauren Daigle - Rescue.mp3" },
+    { chapter: "Chapitre 11", quote: "I need you more than I want to", song: "Shameless – Camila Cabello", file: "assets/Camila Cabello - Shameless.mp3" },
+    { chapter: "Chapitre 12", quote: "Let you go", song: "Until I Found You - Stephen Sanchez", file: "assets/Stephen Sanchez - Until I Found You.mp3" },
+    { chapter: "Chapitre 13", quote: "Master of pretending", song: "Closed Door - Ismail", file: "assets/Ismail - Closed Doors.mp3" },
+    { chapter: "Chapitre 14", quote: "Let the fear you have fall away", song: "Say Yes To Heaven - Lana Del Rey", file: "assets/Lana Del Rey - Say Yes To Heaven.mp3" },
+    { chapter: "Chapitre 15", quote: "I don’t love who I am", song: "Half A Man - Dean Lewis", file: "assets/Dean Lewis - Half A Man.mp3" },
+    { chapter: "Chapitre 16", quote: "She needs to slow down", song: "Sexy Bitch - David Guetta feat Akon", file: "assets/David Guetta - Sexy Bitch (feat. Akon).mp3" },
+    { chapter: "Chapitre 17", quote: "Your darkest fears are gonna come for you", song: "Panic Room - AU/RA", file: "assets/AuRa - Panic Room.mp3" },
+    { chapter: "Chapitre 18", quote: "I’ll fight until the end", song: "Outro – M83", file: "assets/OUTRO - m83.mp3" },
+    { chapter: "Chapitre 19", quote: "Feels like I can’t move", song: "Softscore - The Neighbourhood", file: "assets/The Neighbourhood - Softcore.mp3" },
+    { chapter: "Chapitre 20", quote: "She needs to slow down", song: "You Are Enough - Sleeping At Last", file: "assets/You Are Enough by Sleeping At Last.mp3" },
+    { chapter: "Chapitre 21", quote: "I’ll be so fucking rude", song: "Another Love - Tom Odell", file: "assets/Tom Odell - Another Love.mp3" },
+    { chapter: "Chapitre 22", quote: "It kills me how your mind can make you feel so worthless", song: "Before You Go - Lewis Capaldi", file: "assets/Lewis Capaldi - Before You Go.mp3" },
+    { chapter: "Chapitre 23", quote: "The condition of your soul is erodin", song: "Skin And Bones - David Kushner", file: "assets/David Kushner - Skin and Bones.mp3" },
+    { chapter: "Chapitre 24", quote: "We keep this love in photograph", song: "Photograph - Ed Sheeran", file: "assets/Ed Sheeran - Photograph.mp3" },
+    { chapter: "Chapitre 25", quote: "He has done this all before", song: "Broken - Isak Danielson", file: "assets/Isak Danielson - Broken.mp3" },
+    { chapter: "Chapitre 26", quote: "The Angel Heaven Let Me Think Was You", song: "Apologize - Timbaland ft One Republic", file: "assets/Timbaland - Apologize Feat. OneRepublic.mp3" },
+    { chapter: "Chapitre 27", quote: "We Like To Watch You Laughing", song: "Kids - MGMT", file: "assets/MGMT - Kids.mp3" },
+    { chapter: "Chapitre 28", quote: "Time flies", song: "Come A Little Closer - Cage the elephant", file: "assets/Cage The Elephant - Come A Little Closer.mp3" },
+    { chapter: "Chapitre 29", quote: "Just hold a smile", song: "Never Say Never - The Fray", file: "assets/The Fray - Never Say Never.mp3" },
+    { chapter: "Chapitre 30", quote: "This City Got Me Chasing Stars", song: "This City - Sam Fischer", file: "assets/Sam Fischer - This City.mp3" },
+    { chapter: "Chapitre 31", quote: "I’ll look after you", song: "Look After You - The Fray", file: "assets/The Fray - Look After You.mp3" },
+    { chapter: "Chapitre 32", quote: "I’m ever gonna let you leave", song: "Treehouse - Alex G", file: "assets/Treehouse - Alex G.mp3" },
+    { chapter: "Chapitre 33", quote: "My head was underwater", song: "Everything I Wanted - Billie Eilish", file: "assets/Billie Eilish - everything i wanted.mp3" },
+    { chapter: "Chapitre 34", quote: "We’ll be fine", song: "Treat You Better – Shawn Mendes", file: "assets/Shawn Mendes - Treat You Better.mp3" },
+    { chapter: "Chapitre 35", quote: "You never known how it broke me down", song: "Anchor – Novo Amor", file: "assets/Novo Amor - Anchor.mp3" },
+    { chapter: "Chapitre 36", quote: "The same old theme", song: "Zombie – The Cranberries", file: "assets/The Cranberries - Zombie.mp3" },
+    { chapter: "Chapitre 37", quote: "Forever young", song: "Forever Young – Alphaville", file: "assets/Forever Young.mp3" },
+    { chapter: "Chapitre 38", quote: "Believe me now", song: "Hear Me Now – Bruno Martini", file: "assets/Alok, Bruno Martini feat. Zeeba  Hear Me Now.mp3" },
+    { chapter: "Chapitre 39", quote: "You betrayed me", song: "Traitor – Olivia Rodrigo", file: "assets/Olivia Rodrigo - Traitor.mp3" },
+    { chapter: "Chapitre 40", quote: "I never hated you like I do right now", song: "Make Me (Cry) – Noah Cyrus, Labyrinth", file: "assets/Noah Cyrus, Labrinth - Make Me (Cry) ft. Labrinth.mp3" },
+    { chapter: "Chapitre 41", quote: "You can count on me", song: "Count On Me – Bruno Mars", file: "assets/Bruno Mars - Count On Me.mp3" },
+    { chapter: "Epilogue", quote: "", song: "Love in The Dark - Adele", file: "assets/Love In The Dark - Adele.mp3" }
+];
+
+const tracklistEl = document.getElementById('vintage-tracklist');
+const vinylEl = document.getElementById('vinyl');
+const quoteEl = document.getElementById('vp-quote');
+const songEl = document.getElementById('vp-song');
+
+if (tracklistEl && vinylEl && quoteEl && songEl) {
+    let isInitialLoad = true;
+    let currentAudio = new Audio();
+    let isPlaying = false;
+
+    // New controls
+    const vintagePlayPauseBtn = document.getElementById('vc-play-pause');
+    const vintageVolumeSlider = document.getElementById('vc-volume');
+    const vintageVolumeIcon = document.querySelector('.vc-volume-icon');
+
+    // Set default volume
+    if (vintageVolumeSlider) {
+        currentAudio.volume = parseFloat(vintageVolumeSlider.value);
+    }
+
+    // Update play/pause button icon function
+    function updatePlayPauseUI() {
+        if (!vintagePlayPauseBtn) return;
+        if (isPlaying) {
+            vintagePlayPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        } else {
+            vintagePlayPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        }
+    }
+
+    // Volume input listener
+    if (vintageVolumeSlider && vintageVolumeIcon) {
+        vintageVolumeSlider.addEventListener('input', (e) => {
+            const vol = parseFloat(e.target.value);
+            currentAudio.volume = vol;
+            if (vol === 0) {
+                vintageVolumeIcon.className = 'fas fa-volume-mute vc-volume-icon';
+            } else if (vol < 0.5) {
+                vintageVolumeIcon.className = 'fas fa-volume-down vc-volume-icon';
+            } else {
+                vintageVolumeIcon.className = 'fas fa-volume-up vc-volume-icon';
+            }
+        });
+    }
+
+    // Play/Pause button listener
+    if (vintagePlayPauseBtn) {
+        vintagePlayPauseBtn.addEventListener('click', () => {
+            if (!currentAudio.src) return;
+
+            if (isPlaying) {
+                currentAudio.pause();
+                vinylEl.classList.remove('playing');
+                isPlaying = false;
+            } else {
+                currentAudio.play();
+                vinylEl.classList.add('playing');
+                isPlaying = true;
+            }
+            updatePlayPauseUI();
+        });
+    }
+
+    // Add pointer cursor to vinyl 
+    vinylEl.style.cursor = 'pointer';
+    vinylEl.title = "Cliquez pour lire ou mettre en pause";
+
+    playlistData.forEach((item) => {
+        const trackDiv = document.createElement('div');
+        trackDiv.className = 'track-item';
+        trackDiv.innerHTML = `<span class="track-chapter">${item.chapter}</span>`;
+        trackDiv.title = `Lire: ${item.song}`;
+
+        trackDiv.addEventListener('click', () => {
+
+            // If clicking the current active track, toggle playback
+            if (trackDiv.classList.contains('active') && !isInitialLoad) {
+                if (isPlaying) {
+                    currentAudio.pause();
+                    vinylEl.classList.remove('playing');
+                    isPlaying = false;
+                } else {
+                    currentAudio.play();
+                    vinylEl.classList.add('playing');
+                    isPlaying = true;
+                }
+                updatePlayPauseUI();
+                return;
+            }
+
+            // Update active states
+            const allTracks = document.querySelectorAll('.track-item');
+            allTracks.forEach(el => el.classList.remove('active'));
+            trackDiv.classList.add('active');
+
+            // Fade out current info
+            quoteEl.style.opacity = 0;
+            songEl.style.opacity = 0;
+
+            setTimeout(() => {
+                // Update text
+                if (item.quote) {
+                    quoteEl.textContent = `"${item.quote}"`;
+                    quoteEl.style.display = 'block';
+                } else {
+                    quoteEl.textContent = '';
+                    quoteEl.style.display = 'none';
+                }
+                songEl.innerHTML = `<i class="fas fa-music" style="margin-right: 8px;"></i>${item.song}`;
+                // Fade in
+                quoteEl.style.opacity = 1;
+                songEl.style.opacity = 1;
+            }, 150);
+
+            // Audio setup
+            currentAudio.src = item.file;
+
+            // Toggle vinyl playing state
+            if (!isInitialLoad) {
+                // Play new song
+                currentAudio.play();
+                isPlaying = true;
+
+                // Restart animation
+                vinylEl.classList.remove('playing');
+                setTimeout(() => {
+                    vinylEl.classList.add('playing');
+                }, 10);
+            } else {
+                isPlaying = false;
+            }
+            updatePlayPauseUI();
+        });
+
+        tracklistEl.appendChild(trackDiv);
+    });
+
+    // Play/Pause when clicking the vinyl
+    vinylEl.addEventListener('click', () => {
+        // Only works if a track has been loaded into currentAudio.src
+        if (!currentAudio.src) return;
+
+        if (isPlaying) {
+            currentAudio.pause();
+            vinylEl.classList.remove('playing');
+            isPlaying = false;
+        } else {
+            currentAudio.play();
+            vinylEl.classList.add('playing');
+            isPlaying = true;
+        }
+        updatePlayPauseUI();
+    });
+
+    // Handle end of song
+    currentAudio.addEventListener('ended', () => {
+        isPlaying = false;
+        vinylEl.classList.remove('playing');
+        updatePlayPauseUI();
+    });
+
+    // Init first item
+    const firstTrack = tracklistEl.querySelector('.track-item');
+    if (firstTrack) {
+        firstTrack.click();
+    }
+
+    // Once initial load is done, clicks will animate & play
+    setTimeout(() => {
+        isInitialLoad = false;
+    }, 200);
+}

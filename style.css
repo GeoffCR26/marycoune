@@ -715,20 +715,279 @@ footer p {
     pointer-events: none;
 }
 
-/* ========== PLAYLIST SECTION ========== */
+/* ========== PLAYLIST SECTION (VINTAGE PLAYER) ========== */
 .playlist-section {
     padding: 5rem 0;
     position: relative;
 }
 
-.spotify-embed-container {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-    border-radius: 12px;
-    transition: transform 0.3s ease;
+.vintage-player {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: var(--bg-card);
+    border: 1px solid rgba(251, 191, 36, 0.2);
+    border-radius: 16px;
+    padding: 3rem;
+    gap: 4rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
 
-.spotify-embed-container:hover {
-    transform: translateY(-5px);
+.vintage-vinyl-container {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 320px;
+}
+
+.vinyl {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    /* Grooves effect */
+    background: repeating-radial-gradient(
+        #111 0%, 
+        #1a1a1a 1%, 
+        #050505 2%, 
+        #111 3%
+    );
+    position: relative;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), inset 0 0 15px rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: box-shadow 0.3s ease;
+}
+
+.vinyl.playing {
+    animation: spin 3s linear infinite;
+    box-shadow: 0 0 30px rgba(251, 191, 36, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+.vinyl-label {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: var(--accent-gold);
+    background-image: linear-gradient(135deg, var(--accent-gold), #d97706);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border: 3px solid #eee;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+}
+
+.label-text {
+    font-family: var(--font-heading);
+    color: #111;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.label-hole {
+    width: 14px;
+    height: 14px;
+    background: #000;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.9);
+}
+
+.vintage-playlist-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 380px;
+    overflow: hidden;
+}
+
+.vintage-info-panel {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    min-height: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.vp-quote {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    color: var(--accent-gold);
+    font-style: italic;
+    margin-bottom: 0.5rem;
+    transition: opacity 0.3s ease;
+}
+
+.vp-song {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: var(--text-main);
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+}
+
+/* Vintage Player Controls */
+.vintage-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.vc-btn {
+    background: transparent;
+    border: 1px solid rgba(251, 191, 36, 0.4);
+    color: var(--accent-gold);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.vc-btn:hover {
+    background: var(--accent-gold);
+    color: #111;
+    transform: scale(1.05);
+    border-color: var(--accent-gold);
+}
+
+.vc-volume-container {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--text-muted);
+}
+
+.vc-volume-icon {
+    width: 20px;
+    text-align: center;
+}
+
+.vc-volume-slider {
+    -webkit-appearance: none;
+    width: 100px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    outline: none;
+}
+
+.vc-volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent-gold);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.vc-volume-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.3);
+}
+
+.vintage-tracklist {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 15px;
+}
+
+/* Custom Scrollbar for Tracklist */
+.vintage-tracklist::-webkit-scrollbar {
+    width: 6px;
+}
+
+.vintage-tracklist::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.vintage-tracklist::-webkit-scrollbar-thumb {
+    background: var(--accent-gold);
+    border-radius: 10px;
+}
+
+.track-item {
+    padding: 1rem;
+    margin-bottom: 0.6rem;
+    border-radius: 8px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.03);
+    transition: var(--transition);
+    border-left: 3px solid transparent;
+}
+
+.track-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.track-item.active {
+    background: rgba(251, 191, 36, 0.1);
+    border-left-color: var(--accent-gold);
+}
+
+.track-item.active .track-chapter {
+    color: var(--accent-gold);
+}
+
+.track-chapter {
+    font-weight: 600;
+    color: var(--text-main);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+@media (max-width: 900px) {
+    .vintage-player {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 2rem;
+    }
+    
+    .vintage-playlist-container {
+        width: 100%;
+        height: 350px;
+    }
+    
+    .vintage-vinyl-container {
+        width: 100%;
+    }
+    
+    .vinyl {
+        width: 240px;
+        height: 240px;
+    }
+    
+    .vinyl-label {
+        width: 90px;
+        height: 90px;
+    }
+    
+    .label-text {
+        font-size: 0.6rem;
+    }
 }
 
 /* ========== CONSTELLATION SECTION ========== */
