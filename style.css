@@ -537,8 +537,10 @@ section {
 
 @media (max-width: 768px) {
     .polaroid-scatter-container {
-        height: 1200px; /* Compressed vertical space to prevent gaps */
+        height: 1200px;
+        /* Compressed vertical space to prevent gaps */
     }
+
     .polaroid {
         width: 140px;
         /* Constrained horizontal scattering to stay perfectly in screen bounds */
@@ -748,12 +750,10 @@ footer p {
     height: 300px;
     border-radius: 50%;
     /* Grooves effect */
-    background: repeating-radial-gradient(
-        #111 0%, 
-        #1a1a1a 1%, 
-        #050505 2%, 
-        #111 3%
-    );
+    background: repeating-radial-gradient(#111 0%,
+            #1a1a1a 1%,
+            #050505 2%,
+            #111 3%);
     position: relative;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), inset 0 0 15px rgba(255, 255, 255, 0.1);
     display: flex;
@@ -764,25 +764,27 @@ footer p {
 
 .vinyl.playing {
     animation: spin 3s linear infinite;
-    box-shadow: 0 0 30px rgba(251, 191, 36, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.1);
 }
 
 @keyframes spin {
-    100% { transform: rotate(360deg); }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .vinyl-label {
     width: 110px;
     height: 110px;
     border-radius: 50%;
-    background: var(--accent-gold);
-    background-image: linear-gradient(135deg, var(--accent-gold), #d97706);
+    background: var(--accent-blue);
+    background-image: linear-gradient(135deg, var(--accent-blue), #1d4ed8);
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     border: 3px solid #eee;
-    box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .label-text {
@@ -804,7 +806,7 @@ footer p {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    box-shadow: inset 0 2px 5px rgba(0,0,0,0.9);
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.9);
 }
 
 .vintage-playlist-container {
@@ -912,6 +914,7 @@ footer p {
     flex: 1;
     overflow-y: auto;
     padding-right: 15px;
+    min-height: 0;
 }
 
 /* Custom Scrollbar for Tracklist */
@@ -965,26 +968,27 @@ footer p {
         gap: 2rem;
         padding: 2rem;
     }
-    
+
     .vintage-playlist-container {
         width: 100%;
         height: 500px;
+        flex: none;
     }
-    
+
     .vintage-vinyl-container {
         width: 100%;
     }
-    
+
     .vinyl {
         width: 240px;
         height: 240px;
     }
-    
+
     .vinyl-label {
         width: 90px;
         height: 90px;
     }
-    
+
     .label-text {
         font-size: 0.6rem;
     }
@@ -1504,7 +1508,8 @@ footer p {
 
 .tw-title {
     font-family: var(--font-heading);
-    color: #ef4444; /* Subtle red for the warning */
+    color: #ef4444;
+    /* Subtle red for the warning */
     font-size: 1.5rem;
     margin-bottom: 1rem;
     display: flex;
